@@ -1,40 +1,30 @@
 tableObj = document.createElement('table');
-for (let i = 87; i > 1; i--) {
+url = 'https://swapi.co/api/people/?page=1';
+tableObj.id = "myTable";
+for (let i = 9; i > 1; i--) {
     d = document.getElementById("mySelect");
     option = document.createElement("option");
     option.text = i.toString();
-    // url1 = 'https://swapi.co/api/people/' + i + '/';
-    // xhr1 = new XMLHttpRequest();
-    // xhr1.open('GET', url1);
-    // xhr1.send();
-    // obj1 = JSON.parse(xhr1.response);
-    // option.value = i.toString();
     d.add(option, d[1]);
 }
 
 function fun1() {
     options=document.getElementById('mySelect').options;
     sel = document.getElementById("mySelect").selectedIndex;
-    url = 'https://swapi.co/api/people/' + options[sel].text + '/';
-    div = document.getElementById("items");
-    tableObj.style.top = '10%';
-    tableObj.style.left = '5%';
-
     xhr = new XMLHttpRequest();
     xhr.open('GET', url);
     xhr.send();
     xhr.onload = function() {
-        if (xhr.status != 200) {
-            alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
-            return;
-        }
         obj = JSON.parse(xhr.response);
+        obj2 = obj["results"];
         tableHTML = "";
-        for (let key in obj) {
-            row = '<tr><td>' + key + '</td><td>' + obj[key] + '</td></tr>';
+        for (let key in obj2[options[sel].text]) {
+            row = '<tr><td>' + key + '</td><td>' + obj2[options[sel].text][key] + '</td></tr>';
             tableHTML += row;
         }
         tableObj.innerHTML = tableHTML;
+        tableObj.style.top = '10%';
+        tableObj.style.left = '5%';
         document.body.appendChild(tableObj);
     };
 }
