@@ -3,9 +3,29 @@
 <head>
     <meta charset="utf-8">
     <title>Запрос/Овет</title>
+    <style>
+        table {
+            position: absolute;
+            top: calc(50% - 325px);
+            left: calc(50% - 140px);
+            border-collapse: collapse;
+            border: 1px solid grey;
+        }
+        td {
+            border: 1px solid grey;
+            font-size: 100%;
+            font-family: Verdana, Helvetica, sans-serif;
+            text-align: center;
+            border-collapse: collapse;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
     <script async src="request.js"></script>
 </head>
 <body>
-
+<select id="mySelect" onchange="fun1()">
+    <option>1</option>
+</select>
 </body>
 </html>
