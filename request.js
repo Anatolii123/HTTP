@@ -1,5 +1,6 @@
+let url = 'https://swapi.co/api/people/2/';
 let xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://swapi.co/api/people/1/');
+xhr.open('GET', url);
 xhr.send();
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 3) {
@@ -12,7 +13,8 @@ xhr.onload = function() {
         return;
     }
     alert(`Готово, получено ${xhr.response.length} байт`);
-    // var map = new Map(JSON.parse(xhr.response));
-    // map.get("name");
-    alert(xhr.response.slice(1,7));
+    var obj = JSON.parse(xhr.response);
+    for (let key in obj) {
+        alert(key + ' = ' + obj[key]);
+    }
 };
