@@ -20,13 +20,20 @@
             width: 40px;
             height: 40px;
         }
+        select {
+            visibility: hidden;
+        }
+        p {
+            position: absolute;
+            top: 0px;
+            left: 10px;
+        }
     </style>
-    <script type="text/javascript" src="C:\Users\kusakin\WebstormProjects\jquery.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script async src="request.js"></script>
 </head>
 <body>
-<select id="mySelect" onchange="fun1()">
-    <option>1</option>
-</select>
+<select id="mySelect" onchange="fun1()"></select>
+<p id="text">Загрузка...</p>
 </body>
 </html>
